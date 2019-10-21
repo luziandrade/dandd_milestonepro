@@ -1,3 +1,10 @@
 .col-md-5 img{
     width: 100%;
 }
+.portfolio-item {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    max-width: 530px;
+    margin: auto auto 1rem;
+}
