@@ -18,17 +18,17 @@ def articles():
     return render_template("articles.html", page_title="Article", articles=data)
 
 
-"""@app.route('/articles/<article_name>')
-def articles_name(article_name):
+@app.route('/articles/<article_title>')
+def articles_title(article_title):
     article = {}
 
     with open("data/articles.json", "r") as json_data:
         data = json.load(json_data)
         for obj in data:
-            if obj["url"] == article_name:
+            if obj["url"] == article_title:
                 article = obj
 
-    return render_template("article.html", title=article)"""
+    return render_template("article.html", title=article)
 
 
 if __name__ == '__main__':
