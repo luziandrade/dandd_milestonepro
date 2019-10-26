@@ -12,12 +12,13 @@ def index():
 
 @app.route('/articles')
 def articles():
-    data =[]
+    data = []
     with open("data/articles.json", "r") as json_data:
         data = json.load(json_data)
-    return render_template("articles.html", article=data)
+    return render_template("articles.html", articles=data)
 
-@app.route('/articles/<article_name>')
+
+"""@app.route('/articles/<article_name>')
 def articles_name(article_name):
     article = {}
 
@@ -27,8 +28,7 @@ def articles_name(article_name):
             if obj["url"] == article_name:
                 article = obj
 
-    return render_template("article.html", title=article)
-
+    return render_template("article.html", title=article)"""
 
 
 if __name__ == '__main__':

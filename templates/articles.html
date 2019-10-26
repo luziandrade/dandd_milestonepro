@@ -1,30 +1,33 @@
 {% extends 'base.html' %} {% block content %}
 
 
-{% for title in article %} {% if loop.index % 2 != 0 %}
+{% for article in articles %} {% if loop.index % 2 != 0 %}
+
 <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview"></div>
+        <div class="post-preview">
         <h2> <a href="/articles/{{ article.url }}">{{ loop.index }}. {{ article.title }}</a></h2>
             <p class="post-meta">{{ article.author }} </p>
+        </div>
     </div>
 </div>
 
-    <hr>
 {% else %}
     <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview"></div>
+        <div class="post-preview">
         <h2> <a href="/articles/{{ article.url }}">{{ loop.index }}. {{ article.title }}</a></h2>
             <p class="post-meta">{{ article.author }} </p>
+         </div>
     </div>
-        <hr>
-        <!-- Pager -->
-        <div class="clearfix">
+
+    </div>
+{% endif %} {% if loop.index != 8 %}
+
+    <div class="clearfix">
             <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
         </div>
     </div>
-{% endif %} {% if loop.index != 8 %}
 
 {% endif %} {% endfor %}
 {% endblock %}
