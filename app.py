@@ -15,7 +15,7 @@ def articles():
     data = []
     with open("data/articles.json", "r") as json_data:
         data = json.load(json_data)
-    return render_template("articles.html", articles=data)
+    return render_template("articles.html", page_title="Article", articles=data)
 
 
 """@app.route('/articles/<article_name>')
