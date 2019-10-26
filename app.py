@@ -19,7 +19,7 @@ def articles():
 
 
 @app.route('/articles/<article_title>')
-def articles_title(article_title):
+def articles_article(article_title):
     article = {}
 
     with open("data/articles.json", "r") as json_data:
