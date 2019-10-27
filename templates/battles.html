@@ -2,7 +2,11 @@
 
 {% for guide in guides %}
     <div class="task_header col s9">
-        <strong>{{guide.title}}</strong>
+        <h2>{{ guide.title }}</h2>
+        <h4>Level:</h4><p>{{ guide.level }}</p>
+        <h4>Setting:</h4><p>{{ guide.setting }}</p>
+        <p>{{ guide.description }}</p>
     </div>
+<hr>
 
  {% endfor %} {% endblock %}

@@ -21,6 +21,24 @@ def get_battle():
     return render_template("battles.html", guides=mongo.db.guides.find())
 
 
+@app.route('/get_classes')
+def get_classes():
+    return render_template("classes.html", classes=mongo.db.classes.find())
+
+
+@app.route('/get_races')
+def get_races():
+    return render_template("races.html", races=mongo.db.races.find())
+
+
+@app.route('/get_spells')
+def get_spells():
+    return render_template("spells.html", spells=mongo.db.spells.find())
+
+
+
+
+
 @app.route('/articles')
 def articles():
     data = []
@@ -29,12 +47,12 @@ def articles():
     return render_template("articles.html", page_title="Article", articles=data)
 
 
-@app.route('/battles')
+""""@app.route('/battles')
 def battles():
     return render_template("battles.html")
 
 
-"""@app.route('/articles/<article_title>')
+@app.route('/articles/<article_title>')
 def articles_article(article_title):
     article = {}
 

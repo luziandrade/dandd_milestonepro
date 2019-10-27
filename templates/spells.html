@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+
+{% for spell in spells %}
+    <div class="task_header col s9">
+        <h2>{{ spell.title }}</h2>
+        <p>{{ spell.level}}</p>
+        <p>{{ spell.casting_time }}</p>
+        <p>{{ spell.range }}</p>
+        <p>{{ spell.duration }}</p>
+        <p>{{ spell.damage }}</p>
+        <p>{{ spell.description }}</p>
+        <p>{{ spell.Bard }}</p>
+    </div>
+<hr>
+
+ {% endfor %} {% endblock %}

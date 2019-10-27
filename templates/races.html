@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+
+{% for race in races %}
+    <div class="task_header col s9">
+        <h2>{{ race.title }}</h2>
+        <p>{{ race.age }}</p>
+        <p>{{ race.alignment }}</p>
+        <p>{{ race.speed }}</p>
+        <p>{{ race.description }}</p>
+    </div>
+<hr>
+
+ {% endfor %} {% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+
+{% for class in classes %}
+    <div class="task_header col s9">
+        <h2>{{ class.title }}</h2>
+        <p>{{ class.hit_dice }}</p>
+        <p>{{ class.armor }}</p>
+        <p>{{ class.weapons }}</p>
+        <p>{{ class.description }}</p>
+    </div>
+<hr>
+
+ {% endfor %} {% endblock %}
