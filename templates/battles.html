@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+
+{% for guide in guides %}
+    <div class="task_header col s9">
+        <strong>{{guide.title}}</strong>
+    </div>
+
+
+{% endblock %}

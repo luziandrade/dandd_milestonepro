@@ -8,3 +8,22 @@
     max-width: 530px;
     margin: auto auto 1rem;
 }
+
+.img-responsive {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.content-section {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+}
+section {
+    display: block;
+}
+
+.caption-content .caption{
+    color: #fff;
+    margin: auto 2rem 2rem;
+    font-size: 8rem;
+}

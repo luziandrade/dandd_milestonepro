@@ -1,13 +1,24 @@
 import os
 import json
 from flask import Flask, render_template, request, url_for
+from flask_pymongo import PyMongo
 
 app = Flask(__name__)
+app.config["MONGO_DBNAME"] = 'dungeons'
+app.config[
+    "MONGO_URI"] = 'mongodb+srv://root:010203@myfirstcluster-ekkz4.mongodb.net/dungeons?retryWrites=true&w=majority'
+
+mongo = PyMongo(app)
 
 
 @app.route('/')
 def index():
     return render_template("index.html")
+
+
+@app.route('/get_battle')
+def get_battle():
+    return render_template("battles.html", guides=mongo.db.guides.find())
 
 
 @app.route('/articles')
@@ -18,7 +29,12 @@ def articles():
     return render_template("articles.html", page_title="Article", articles=data)
 
 
-@app.route('/articles/<article_title>')
+@app.route('/battles')
+def battles():
+    return render_template("battles.html")
+
+
+"""@app.route('/articles/<article_title>')
 def articles_article(article_title):
     article = {}
 
@@ -28,7 +44,7 @@ def articles_article(article_title):
             if obj["url"] == article_title:
                 article = obj
 
-    return render_template("article.html", article=article)
+    return render_template("article.html", article=article)"""
 
 
 if __name__ == '__main__':
