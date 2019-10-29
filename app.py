@@ -36,15 +36,20 @@ def get_spells():
     return render_template("spells.html", spells=mongo.db.spells.find())
 
 
-
-
-
 @app.route('/articles')
 def articles():
     data = []
     with open("data/articles.json", "r") as json_data:
         data = json.load(json_data)
     return render_template("articles.html", page_title="Article", articles=data)
+
+
+@app.route('/spells_level')
+def spells_level():
+    myquery = { "class.3": "Druid" }
+    return render_template('spells_level.html', spells=mongo.db.spells.find_one( myquery))
+
+
 
 
 """"@app.route('/battles')
