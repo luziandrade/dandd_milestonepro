@@ -1,9 +1,10 @@
 import os
 import json
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, flash
 from flask_pymongo import PyMongo
 
 app = Flask(__name__)
+app.secret_key = 'some_secret'
 app.config["MONGO_DBNAME"] = 'dungeons'
 app.config[
     "MONGO_URI"] = 'mongodb+srv://root:010203@myfirstcluster-ekkz4.mongodb.net/dungeons?retryWrites=true&w=majority'
@@ -39,7 +40,7 @@ def get_spells():
 @app.route('/articles')
 def articles():
     data = []
-    with open("data/articles.json", "r") as json_data:
+    with open("data/company.json", "r") as json_data:
         data = json.load(json_data)
     return render_template("articles.html", page_title="Article", articles=data)
 
@@ -48,7 +49,7 @@ def articles():
 def articles_article(article_name):
     article = {}
 
-    with open("data/articles.json", "r") as json_data:
+    with open("data/company.json", "r") as json_data:
         data = json.load(json_data)
         for obj in data:
             if obj["url"] == article_name:
