@@ -44,30 +44,28 @@ def articles():
     return render_template("articles.html", page_title="Article", articles=data)
 
 
-@app.route('/spells_level')
-def spells_level():
-    myquery = { "class.3": "Druid" }
-    return render_template('spells_level.html', spells=mongo.db.spells.find_one( myquery))
-
-
-
-
-""""@app.route('/battles')
-def battles():
-    return render_template("battles.html")
-
-
-@app.route('/articles/<article_title>')
-def articles_article(article_title):
+@app.route('/articles/<article_name>')
+def articles_article(article_name):
     article = {}
 
     with open("data/articles.json", "r") as json_data:
         data = json.load(json_data)
         for obj in data:
-            if obj["url"] == article_title:
+            if obj["url"] == article_name:
                 article = obj
 
-    return render_template("article.html", article=article)"""
+    return render_template("article.html", article=article)
+
+
+@app.route('/spells_level')
+def spells_level():
+    query = {"level":"Cantrip", "class":"Bard"}
+    return render_template('spells_level.html', spellevel=mongo.db.spells.find(query))
+
+
+""""@app.route('/battles')
+def battles():
+    return render_template("battles.html")"""
 
 
 if __name__ == '__main__':
