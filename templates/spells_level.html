@@ -1,5 +1,4 @@
 {% extends 'base.html' %} {% block content %}
- <a href="{{url_for('spells_level')}}" class="waves-effect waves-light btn btn_small blue">Level</a>
 
 {% for spell in spellevel %}
     <div class="task_header col s9">
@@ -10,6 +9,21 @@
        <p>{{ spell.duration }}</p>
        <p>{{ spell.damage }}</p>
       <p>{{ spell.description }}</p>
+    <p>{{ spell.class }}</p>
+   </div>
+<hr>
+{% endfor %}
+
+ {% for spell in spellevel1 %}
+    <div class="task_header col s9">
+       <p>{{ spell.title}}</p>
+        <p>{{ spell.level}}</p>
+    <p>{{ spell.casting_time }}</p>
+      <p>{{ spell.range }}</p>
+       <p>{{ spell.duration }}</p>
+       <p>{{ spell.damage }}</p>
+      <p>{{ spell.description }}</p>
+    <p>{{ spell.class }}</p>
    </div>
 <hr>
 

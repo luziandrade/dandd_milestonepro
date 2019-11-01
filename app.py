@@ -1,7 +1,8 @@
 import os
 import json
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
@@ -40,7 +41,7 @@ def get_spells():
 @app.route('/articles')
 def articles():
     data = []
-    with open("data/company.json", "r") as json_data:
+    with open("data/article.json", "r") as json_data:
         data = json.load(json_data)
     return render_template("articles.html", page_title="Article", articles=data)
 
@@ -49,7 +50,7 @@ def articles():
 def articles_article(article_name):
     article = {}
 
-    with open("data/company.json", "r") as json_data:
+    with open("data/article.json", "r") as json_data:
         data = json.load(json_data)
         for obj in data:
             if obj["url"] == article_name:
@@ -58,10 +59,26 @@ def articles_article(article_name):
     return render_template("article.html", article=article)
 
 
+"""@app.route('/spells_level')
+def spells_bard():
+    spell_ = mongo.db.spells.find({"class":"Bard","level":"Cantrip"})
+    spell1 = mongo.db.spells.find({"class": "Bard", "level": "1st"})
+
+    return render_template("spells_level.html", spellevel=spell, spellevel1=spell1)
+
+
 @app.route('/spells_level')
+def spells_wizard():
+    spell = mongo.db.spells.find({"class":"Wizard","level":"Cantrip"})
+    return render_template("spells_level.html", spellevel=spell)"""
+
+
+
+
+"""@app.route('/spells_level')
 def spells_level():
     query = {"level":"Cantrip", "class":"Bard"}
-    return render_template('spells_level.html', spellevel=mongo.db.spells.find(query))
+    return render_template('spells_level.html', spellevel=mongo.db.spells.find(query))"""
 
 
 """"@app.route('/battles')
