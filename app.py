@@ -73,8 +73,6 @@ def spells_wizard():
     return render_template("spells_level.html", spellevel=spell)"""
 
 
-
-
 """@app.route('/spells_level')
 def spells_level():
     query = {"level":"Cantrip", "class":"Bard"}
@@ -87,6 +85,6 @@ def battles():
 
 
 if __name__ == '__main__':
-    app.run(host=os.getenv('IP', '0.0.0.0'),
+    app.run(host=os.getenv('IP', '127.0.0.1'),
             port=os.getenv('PORT', '5000'),
             debug=True)
