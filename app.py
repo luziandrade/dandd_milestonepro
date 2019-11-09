@@ -63,16 +63,11 @@ def articles_article(article_name):
 def spells_bard():
     spell_ = mongo.db.spells.find({"class":"Bard","level":"Cantrip"})
     spell1 = mongo.db.spells.find({"class": "Bard", "level": "1st"})
-
     return render_template("spells_level.html", spellevel=spell, spellevel1=spell1)
-
-
 @app.route('/spells_level')
 def spells_wizard():
     spell = mongo.db.spells.find({"class":"Wizard","level":"Cantrip"})
     return render_template("spells_level.html", spellevel=spell)"""
-
-
 
 
 """@app.route('/spells_level')
@@ -87,6 +82,6 @@ def battles():
 
 
 if __name__ == '__main__':
-    app.run(host=os.getenv('IP', '0.0.0.0'),
+    app.run(host=os.getenv('IP', '127.0.0.1'),
             port=os.getenv('PORT', '5000'),
             debug=True)
