@@ -1,35 +1,122 @@
+  spellevel32 = mongo.db.spells.find({"class": "Paladin", "level": "Cantrip"})
+    spellevel33 = mongo.db.spells.find({"class": "Paladin", "level": "1st"})
+    spellevel34 = mongo.db.spells.find({"class": "Paladin", "level": "2nd"})
+    spellevel35 = mongo.db.spells.find({"class": "Paladin", "level": "3rd"})
+
+    return render_template('spells_level.html',
+                           spells32=spellevel32,
+                           spells33=spellevel33,
+                           spells34=spellevel34,
+                           spells35=spellevel35)
+
+
+
+
 {% extends 'base.html' %} {% block content %}
 
- <a href="{{url_for('spells_level')}}" class="waves-effect waves-light btn btn_small blue">Level</a>
+    <a href="{{url_for('spells_druid')}}" class="waves-effect waves-light btn btn_small blue">Druid</a>
+    <a href="{{url_for('spells_bard')}}" class="waves-effect waves-light btn btn_small blue">Bard</a>
+    <a href="{{url_for('spells_wizard')}}" class="waves-effect waves-light btn btn_small blue">Wizard</a>
+    <a href="{{url_for('spells_sorcerer')}}" class="waves-effect waves-light btn btn_small blue">Sorcerer</a>
+    <a href="{{url_for('spells_artificer')}}" class="waves-effect waves-light btn btn_small blue">Artificer</a>
+    <a href="{{url_for('spells_cleric')}}" class="waves-effect waves-light btn btn_small blue">Cleric</a>
+    <a href="{{url_for('spells_warlock')}}" class="waves-effect waves-light btn btn_small blue">Warlock</a>
+    <a href="{{url_for('spells_ranger')}}" class="waves-effect waves-light btn btn_small blue">Ranger</a>
+    <a href="{{url_for('spells_paladin')}}" class="waves-effect waves-light btn btn_small blue">Paladin</a>
 
-{% for spell in spellevel %}
-
-    <div class="accordion task_header col s9" id="accordionExample">
+<div class="accordion" id="accordionExample">
+{% for spell in spells4 %}
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-         {{ spell.level }}
+         Cantrip
         </button>
       </h2>
     </div>
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-
-        {% for spell in spellevel %}
-             <div class="task_header col s9">
-                 <p>{{ spell.name}}</p>
-                 <p>{{ spell.casting_time }}</p>
-                 <p>{{ spell.range }}</p>
-                 <p>{{ spell.duration }}</p>
-                 <p>{{ spell.damage }}</p>
-                 <p>{{ spell.description }}</p>
-            </div>
-            <hr>
-        {% endfor %}
+      <div class="panel-body">
+        <p>{{ spell.title}}</p>
+        <p>{{ spell.casting_time }}</p>
+        <p>{{ spell.range }}</p>
+        <p>{{ spell.duration }}</p>
+        <p>{{ spell.damage }}</p>
+        <p>{{ spell.description }}</p>
       </div>
     </div>
   </div>
+
+{% endfor %}
+
+  {% for spell in spells5 %}
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          First Level
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="panel-body">
+          <p>{{ spell.title}}</p>
+          <p>{{ spell.casting_time }}</p>
+          <p>{{ spell.range }}</p>
+          <p>{{ spell.duration }}</p>
+          <p>{{ spell.damage }}</p>
+          <p>{{ spell.description }}</p>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+
+  {% for spell in spells6 %}
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Second Level
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="panel-body">
+          <p>{{ spell.title}}</p>
+          <p>{{ spell.casting_time }}</p>
+          <p>{{ spell.range }}</p>
+          <p>{{ spell.duration }}</p>
+          <p>{{ spell.damage }}</p>
+          <p>{{ spell.description }}</p>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+
+{% for spell in spells7 %}
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Third Level
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="panel-body">
+          <p>{{ spell.title}}</p>
+          <p>{{ spell.casting_time }}</p>
+          <p>{{ spell.range }}</p>
+          <p>{{ spell.duration }}</p>
+          <p>{{ spell.damage }}</p>
+          <p>{{ spell.description }}</p>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+
 </div>
-t.
+{% endblock %}

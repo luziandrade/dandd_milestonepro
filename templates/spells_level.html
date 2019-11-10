@@ -1,33 +1,13 @@
-{% extends 'base.html' %} {% block content %}
+{%  extends 'base.html' %} {% block content %}
 
-{% for spell in spellevel %}
-    <div class="task_header col s9">
-       <p>{{ spell.title}}</p>
-        <p>{{ spell.level}}</p>
-    <p>{{ spell.casting_time }}</p>
-      <p>{{ spell.range }}</p>
-       <p>{{ spell.duration }}</p>
-       <p>{{ spell.damage }}</p>
-      <p>{{ spell.description }}</p>
-    <p>{{ spell.class }}</p>
-   </div>
-<hr>
-{% endfor %}
+<div class="row">
+    <div class="col-md-5">
+        <h2 class="col-md-7">{{ spell.name }}</h2>
+    </div>
+</div>
 
- {% for spell in spellevel1 %}
-    <div class="task_header col s9">
-       <p>{{ spell.title}}</p>
-        <p>{{ spell.level}}</p>
-    <p>{{ spell.casting_time }}</p>
-      <p>{{ spell.range }}</p>
-       <p>{{ spell.duration }}</p>
-       <p>{{ spell.damage }}</p>
-      <p>{{ spell.description }}</p>
-    <p>{{ spell.class }}</p>
-   </div>
-<hr>
-
-{% endfor %}
+<div class="col-md-12">
+    <p>{{ spell.query }}</p>
+</div>
 
 {% endblock %}
-test
