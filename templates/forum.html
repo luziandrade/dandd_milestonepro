@@ -1,0 +1,9 @@
+{%  extends 'base.html' %} {% block content %}
+
+    <h2>Questions</h2>
+            <div class="container">
+                {% for  question in questions  %}
+                    <h2><a name="question_name" href="{{url_for('reply_question', question_id=question._id)}}">{{ question.question_name }}</a></h2>
+                {% endfor %}
+            </div>
+{% endblock %}

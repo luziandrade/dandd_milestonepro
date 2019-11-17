@@ -120,3 +120,52 @@
 
 </div>
 {% endblock %}
+
+</div>
+
+<div class="row">
+{% for comment in comments %}
+    <div class="task_header col s9">
+        <p>{{comment.text}}</p>
+    </div>
+{% endfor %}
+</div>
+
+return redirect(url_for('get_comments'))
+
+--
+<div class="row">
+{% for comment in comments %}
+    <div class="col s3">
+                    <a href="{{url_for('reply_question', question_id=question._id)}}" class="waves-effect waves-light btn btn_small blue">Reply</a>
+
+                </div>
+    <div class="task_header col s9">
+        <p>{{comment.question}}</p>
+    </div>
+{% endfor %}
+</div>
+
+--
+
+<div class="row">
+    <ul class="collapsible" data-collapsible="accordion">
+        {% for comment in comments %}
+        <li>
+            <div class="collapsible-header">
+                <div class="task_header col s9">
+                    <strong>{{comment.question}}</strong>
+                </div>
+            </div>
+            <div class="collapsible-body">
+                <span>
+
+            </span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+--
+a href="{{url_for('reply_question', reply_id=reply._id)}}" class="waves-effect waves-light btn btn_small blue">Reply</a>

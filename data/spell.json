@@ -1,0 +1,7 @@
+[
+  {
+    "name": "Paladin",
+    "query": "mongo.db.spells.find({\"class\": \"Paladin\", \"level\": \"Cantrip\"}),",
+    "url": "paladin"
+  }
+]

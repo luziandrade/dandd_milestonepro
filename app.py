@@ -189,7 +189,7 @@ def articles_article(article_name):
 @app.route('/login', methods=['POST'])
 def login():
     users = mongo.db.users
-    login_user = users.find_one({'name' : request.form['username']})
+    login_user = users.find_one({'name': request.form['username']})
 
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
@@ -214,6 +214,24 @@ def register():
         return 'That username already exists!'
 
     return render_template('register.html')
+
+
+@app.route('/get_comments')
+def get_comments():
+    return render_template("forum.html", questions=mongo.db.questions.find())
+
+
+@app.route('/insert_reply', methods=['POST'])
+def insert_question():
+    comment = mongo.db.comments
+    comment.insert({'question_name': request.form['question_name'], 'reply_name': request.form['reply_name']})
+    return redirect(url_for('get_comments'))
+
+
+@app.route('/reply_question/<question_id>')
+def reply_question(question_id):
+    questions = mongo.db.questions.find_one({"_id": ObjectId(question_id)})
+    return render_template("reply.html", question=questions)
 
 
 """"@app.route('/battles')
