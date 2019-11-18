@@ -3,7 +3,20 @@
     <h2>Questions</h2>
             <div class="container">
                 {% for  question in questions  %}
-                    <h2><a name="question_name" href="{{url_for('reply_question', question_id=question._id)}}">{{ question.question_name }}</a></h2>
+                    <h2><a type="hidden" name="question_name" value="{{question.question_name}}" href="{{url_for('reply_question', question_id=question._id, question_name=question.question_name)}}">{{ question.question_name }}</a></h2>
                 {% endfor %}
             </div>
+
+<form action="{{ url_for('insert_questions')}}" method="POST" class="col s12">
+<div class="row">
+
+      <label for="comment">Comment:</label>
+      <textarea name="question_name" id="question_name" class="form-control" rows="5" id="comment"></textarea>
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Reply
+    </button>
+
+</div>
+</form>
+
 {% endblock %}

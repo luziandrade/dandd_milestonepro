@@ -1,11 +1,11 @@
 {%  extends 'base.html' %} {% block content %}
 
 <h3>Questions</h3>
-<form action="{{ url_for('insert_question') }}" method="POST" class="col s12">
+<form action="{{ url_for('insert_reply')}}" method="POST" class="col s12">
 <div class="row">
 
-        <p name="question_name">{{ question.question_name }}</p>
-
+    <input type="hidden" name="question_name" value="{{question.question_name}}">
+    <p>{{question.question_name}}</p>
 
       <label for="comment">Comment:</label>
       <textarea name="reply_name" id="reply_name" class="form-control" rows="5" id="comment"></textarea>
@@ -15,5 +15,14 @@
 
 </div>
 </form>
+
+    <div class="row">
+
+{% for comment in comments %}
+    <h1> {{comment.reply_name}}</h1>
+
+{% endfor %}
+    </div>
+
 
 {% endblock %}

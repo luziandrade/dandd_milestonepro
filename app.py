@@ -222,16 +222,27 @@ def get_comments():
 
 
 @app.route('/insert_reply', methods=['POST'])
-def insert_question():
+def insert_reply():
     comment = mongo.db.comments
     comment.insert({'question_name': request.form['question_name'], 'reply_name': request.form['reply_name']})
     return redirect(url_for('get_comments'))
 
 
-@app.route('/reply_question/<question_id>')
-def reply_question(question_id):
+@app.route('/reply_question/<question_id>/<question_name>')
+def reply_question(question_id, question_name):
     questions = mongo.db.questions.find_one({"_id": ObjectId(question_id)})
-    return render_template("reply.html", question=questions)
+    comments = mongo.db.comments.find({"question_name": question_name})
+
+    return render_template("reply.html", question=questions, comments=comments)
+
+
+@app.route('/get_questions', methods=['POST'])
+def insert_questions():
+    if request.method == 'POST':
+
+    comment = mongo.db.questions
+    comment.insert({'question_name': request.form['question_name']})
+    return redirect(url_for('get_comments'))
 
 
 """"@app.route('/battles')

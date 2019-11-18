@@ -1,0 +1,35 @@
+{%  extends 'base.html' %} {% block content %}
+
+<h3>Edit Task</h3>
+
+<div class="row">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">poll</i>
+          <select id="category" name="category_name">
+            <option value="" disabled selected>Choose Category</option>
+            {% for comment in comments %}
+                {% if comment.question_name == questions.question_name %}
+                <option value="{{comment.question_name}}" selected>{{comment.question_name}}</option>
+                {% else %}
+                <option value="{{comment.question_name}}">{{comment.question_name}}</option>
+                {% endif%}
+            {% endfor %}
+          </select>
+          <label>Task Category</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">mode_edit</i>
+          <input id="task_name" name="task_name" type="text" class="validate" value="{{comment.reply_name}}"></input>
+          <label for="icon_prefix2">Task name</label>
+        </div>
+      </div>
+
+
+
+
+  </div>
+
+{% endblock %}
