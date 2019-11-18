@@ -238,7 +238,6 @@ def reply_question(question_id, question_name):
 
 @app.route('/get_questions', methods=['POST'])
 def insert_questions():
-    if request.method == 'POST':
 
     comment = mongo.db.questions
     comment.insert({'question_name': request.form['question_name']})
