@@ -16,9 +16,7 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    if 'username' in session:
-
-        return render_template("index.html", username='You are logged in as ' + session['username'])
+    return render_template("index.html")
 
 
 @app.route('/get_battle')
@@ -233,33 +231,43 @@ def logout():
 
 @app.route('/get_comments')
 def get_comments():
-    return render_template("forum.html", questions=mongo.db.questions.find())
+    return render_template("forum.html", questions=mongo.db.questions.find(),
+                           users=mongo.db.users.find({"name": session['username']}))
 
 
 @app.route('/insert_reply', methods=['POST'])
 def insert_reply():
-    comment = mongo.db.comments
-    comment.insert({'question_name': request.form['question_name'], 'reply_name': request.form['reply_name']})
-    return redirect(url_for('get_comments'))
+    if g.username:
+        comment = mongo.db.comments
+        comment.insert({'question_name': request.form['question_name'],
+                        'reply_name': request.form['reply_name'],
+                        'username': session['username']})
+        return redirect(url_for('get_comments'))
+
+    return render_template('register.html')
 
 
 @app.route('/reply_question/<question_id>/<question_name>')
 def reply_question(question_id, question_name):
-    if g.username:
-        questions = mongo.db.questions.find_one({"_id": ObjectId(question_id)})
-        comments = mongo.db.comments.find({"question_name": question_name})
-
-        return render_template("reply.html", question=questions, comments=comments)
-
-    return 'Invalid username/password combination'
+    questions = mongo.db.questions.find_one({"_id": ObjectId(question_id)})
+    comments = mongo.db.comments.find({"question_name": question_name})
+    user = mongo.db.users.find({"name": session['username']})
+    return render_template("reply.html", question=questions, comments=comments, users=user)
 
 
 @app.route('/get_questions', methods=['POST'])
 def insert_questions():
 
     comment = mongo.db.questions
-    comment.insert({'question_name': request.form['question_name']})
+    comment.insert({'question_name': request.form['question_name'], 'username': request.form['username']})
     return redirect(url_for('get_comments'))
+
+
+@app.route('/edit_comment/<comment_id>')
+def edit_comment(comment_id):
+    the_comments = mongo.db.comments.find_one({"_id": ObjectId(comment_id)})
+    all_questions = mongo.db.questions.find()
+    return render_template("editcomment.html", comments=the_comments, questions=all_questions)
 
 
 """"@app.route('/battles')

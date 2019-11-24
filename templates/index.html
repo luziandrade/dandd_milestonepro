@@ -16,8 +16,6 @@
     </div>
 </section>
 
-    <h2>{{ username }}</h2>
-
     <!--Guide-->
 <section class="content-section ">
     <div class="container">
@@ -94,6 +92,30 @@
 
 </section>
 
+        <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-login">
+        <div class="modal-content">
+            <div class="modal-header">
+				<h4 class="modal-title">Member Login</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+            <div class="modal-body">
+            <form method=POST action="{{ url_for('login') }}">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="pass" placeholder="Password" required="required">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Log In</button>
+                </div>
+            </form>
+            </div>
+                <div class="modal-footer">Don't have an account? <br><a href="{{ url_for('register') }}">Sign up here</a>.</div>
+        </div>
+    </div>
+    </div>
 
 
 
