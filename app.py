@@ -1,7 +1,7 @@
 import os
 import json
 import bcrypt
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, g
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -16,7 +16,9 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    if 'username' in session:
+
+        return render_template("index.html", username='You are logged in as ' + session['username'])
 
 
 @app.route('/get_battle')
@@ -216,6 +218,19 @@ def register():
     return render_template('register.html')
 
 
+@app.before_request
+def before_request():
+    g.username = None
+    if 'username' in session:
+        g.username = session['username']
+
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return render_template('index.html')
+
+
 @app.route('/get_comments')
 def get_comments():
     return render_template("forum.html", questions=mongo.db.questions.find())
@@ -230,10 +245,13 @@ def insert_reply():
 
 @app.route('/reply_question/<question_id>/<question_name>')
 def reply_question(question_id, question_name):
-    questions = mongo.db.questions.find_one({"_id": ObjectId(question_id)})
-    comments = mongo.db.comments.find({"question_name": question_name})
+    if g.username:
+        questions = mongo.db.questions.find_one({"_id": ObjectId(question_id)})
+        comments = mongo.db.comments.find({"question_name": question_name})
 
-    return render_template("reply.html", question=questions, comments=comments)
+        return render_template("reply.html", question=questions, comments=comments)
+
+    return 'Invalid username/password combination'
 
 
 @app.route('/get_questions', methods=['POST'])
