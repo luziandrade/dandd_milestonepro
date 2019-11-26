@@ -3,12 +3,12 @@
 <h3>Edit Comment</h3>
 
 <div class="row">
-{% for comment in comments %}
-    <form action="" method="POST" class="col s12">
+
+    <form action="{{ url_for('update_comment', comment_id=comments._id) }}" method="POST" class="col s12">
       <div class="row">
         <div class="input-field col s12">
 
-          <textarea id="comment_id" name="reply_name" class="materialize-textarea">{{comment.reply_name}}</textarea>
+          <textarea id="comment_id" name="reply_name" class="materialize-textarea">{{comments.reply_name}}</textarea>
           <label for="icon_prefix2">Comment: </label>
         </div>
       </div>
@@ -18,7 +18,7 @@
         </button>
       </div>
     </form>
-  {% endfor %}
+
   </div>
 
 {% endblock %}

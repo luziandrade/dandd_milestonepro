@@ -36,133 +36,19 @@ def get_races():
 
 @app.route('/get_spells')
 def get_spells():
-    return render_template("spells.html", spells=mongo.db.spells.find())
+    classes = mongo.db.classes.find()
+    spells = mongo.db.spells.find()
+    return render_template("spells.html", classes=classes, spells=spells)
 
 
-@app.route('/spells')
-def spells_druid():
-    spellevel = mongo.db.spells.find({"class": "Druid", "level": "Cantrip"})
-    spellevel1 = mongo.db.spells.find({"class": "Druid", "level": "1st"})
-    spellevel2 = mongo.db.spells.find({"class": "Druid", "level": "2nd"})
-    spellevel3 = mongo.db.spells.find({"class": "Druid", "level": "3rd"})
+@app.route('/spells_name/<class_name>')
+def spells_name(class_name):
+    classes = mongo.db.classes.find()
+    spellevel = mongo.db.spells.find({"class": class_name, "level": "Cantrip"})
 
-    return render_template('spells.html',
+    return render_template('spells_name.html',
                            spells=spellevel,
-                           spells1=spellevel1,
-                           spells2=spellevel2,
-                           spells3=spellevel3)
-
-
-@app.route('/spells_level')
-def spells_bard():
-    spellevel4 = mongo.db.spells.find({"class": "Bard", "level": "Cantrip"})
-    spellevel5 = mongo.db.spells.find({"class": "Bard", "level": "1st"})
-    spellevel6 = mongo.db.spells.find({"class": "Bard", "level": "2nd"})
-    spellevel7 = mongo.db.spells.find({"class": "Bard", "level": "3rd"})
-
-    return render_template('spells_level.html',
-                           spells4=spellevel4,
-                           spells5=spellevel5,
-                           spells6=spellevel6,
-                           spells7=spellevel7)
-
-
-@app.route('/spells_level')
-def spells_wizard():
-    spellevel8 = mongo.db.spells.find({"class": "Wizard", "level": "Cantrip"})
-    spellevel9 = mongo.db.spells.find({"class": "Wizard", "level": "1st"})
-    spellevel10 = mongo.db.spells.find({"class": "Wizard", "level": "2nd"})
-    spellevel11 = mongo.db.spells.find({"class": "Wizard", "level": "3rd"})
-
-    return render_template('spells_level.html',
-                           spells8=spellevel8,
-                           spells9=spellevel9,
-                           spells10=spellevel10,
-                           spells11=spellevel11)
-
-
-@app.route('/spells_level')
-def spells_sorcerer():
-    spellevel12 = mongo.db.spells.find({"class": "Sorcerer", "level": "Cantrip"})
-    spellevel13 = mongo.db.spells.find({"class": "Sorcerer", "level": "1st"})
-    spellevel14 = mongo.db.spells.find({"class": "Sorcerer", "level": "2nd"})
-    spellevel15 = mongo.db.spells.find({"class": "Sorcerer", "level": "3rd"})
-
-    return render_template('spells_level.html',
-                           spells12=spellevel12,
-                           spells13=spellevel13,
-                           spells14=spellevel14,
-                           spells15=spellevel15)
-
-
-@app.route('/spells_level')
-def spells_artificer():
-    spellevel16 = mongo.db.spells.find({"class": "Artificer", "level": "Cantrip"})
-    spellevel17 = mongo.db.spells.find({"class": "Artificer", "level": "1st"})
-    spellevel18 = mongo.db.spells.find({"class": "Artificer", "level": "2nd"})
-    spellevel19 = mongo.db.spells.find({"class": "Artificer", "level": "3rd"})
-
-    return render_template('spells_level.html',
-                           spells16=spellevel16,
-                           spells17=spellevel17,
-                           spells18=spellevel18,
-                           spells19=spellevel19)
-
-
-@app.route('/spells_level')
-def spells_warlock():
-    spellevel20 = mongo.db.spells.find({"class": "Warlock", "level": "Cantrip"})
-    spellevel21 = mongo.db.spells.find({"class": "Warlock", "level": "1st"})
-    spellevel22 = mongo.db.spells.find({"class": "Warlock", "level": "2nd"})
-    spellevel23 = mongo.db.spells.find({"class": "Warlock", "level": "3rd"})
-
-    return render_template('spells_level.html',
-                           spells20=spellevel20,
-                           spells21=spellevel21,
-                           spells22=spellevel22,
-                           spells23=spellevel23)
-
-
-@app.route('/spells_level')
-def spells_cleric():
-    spellevel24 = mongo.db.spells.find({"class": "Cleric", "level": "Cantrip"})
-    spellevel25 = mongo.db.spells.find({"class": "Cleric", "level": "1st"})
-    spellevel26 = mongo.db.spells.find({"class": "Cleric", "level": "2nd"})
-    spellevel27 = mongo.db.spells.find({"class": "Cleric", "level": "3rd"})
-
-    return render_template('spells_level.html',
-                           spells20=spellevel24,
-                           spells21=spellevel25,
-                           spells22=spellevel26,
-                           spells23=spellevel27)
-
-
-@app.route('/spells_level')
-def spells_ranger():
-    spellevel28 = mongo.db.spells.find({"class": "Ranger", "level": "Cantrip"})
-    spellevel29 = mongo.db.spells.find({"class": "Ranger", "level": "1st"})
-    spellevel30 = mongo.db.spells.find({"class": "Ranger", "level": "2nd"})
-    spellevel31 = mongo.db.spells.find({"class": "Ranger", "level": "3rd"})
-
-    return render_template('spells_level.html',
-                           spells28=spellevel28,
-                           spells29=spellevel29,
-                           spells30=spellevel30,
-                           spells31=spellevel31)
-
-
-@app.route('/spells_level')
-def spells_paladin():
-    spellevel32 = mongo.db.spells.find({"class": "Paladin", "level": "Cantrip"})
-    spellevel33 = mongo.db.spells.find({"class": "Paladin", "level": "1st"})
-    spellevel34 = mongo.db.spells.find({"class": "Paladin", "level": "2nd"})
-    spellevel35 = mongo.db.spells.find({"class": "Paladin", "level": "3rd"})
-
-    return render_template('spells_level.html',
-                           spells32=spellevel32,
-                           spells33=spellevel33,
-                           spells34=spellevel34,
-                           spells35=spellevel35)
+                           classes=classes)
 
 
 @app.route('/articles')
@@ -251,8 +137,9 @@ def insert_reply():
 def reply_question(question_id, question_name):
     questions = mongo.db.questions.find_one({"_id": ObjectId(question_id)})
     comments = mongo.db.comments.find({"question_name": question_name})
-    user = mongo.db.users.find({"name": session['username']})
-    return render_template("reply.html", question=questions, comments=comments, users=user)
+    author = mongo.db.users.find({"name": session['username']})
+    user = session['username']
+    return render_template("reply.html", question=questions, comments=comments, user=user, users=author)
 
 
 @app.route('/get_questions', methods=['POST'])
@@ -268,6 +155,20 @@ def edit_comment(comment_id):
     the_comments = mongo.db.comments.find_one({"_id": ObjectId(comment_id)})
     all_questions = mongo.db.questions.find()
     return render_template("editcomment.html", comments=the_comments, questions=all_questions)
+
+
+@app.route('/update_comment/<comment_id>', methods=["POST"])
+def update_comment(comment_id):
+    comments = mongo.db.comments
+    comments.update_one({'_id': ObjectId(comment_id)}, {"$set": {'reply_name': request.form.get('reply_name')}})
+    return redirect(url_for('get_comments'))
+
+
+@app.route('/delete_comment/<comment_id>')
+def delete_comment(comment_id):
+    comments = mongo.db.comments
+    comments.remove({'_id': ObjectId(comment_id)})
+    return redirect(url_for('get_comments'))
 
 
 """"@app.route('/battles')
