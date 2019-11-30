@@ -1,6 +1,8 @@
 {% extends 'base.html' %} {% block content %}
-    <!--<h2>{{ page_title }}</h2>-->
-
+    <section class="container">
+    <div class="content_heading text-center">
+        <h2 class="mb-5">Articles</h2>
+    </div>
 
 {% for article in articles %} {% if loop.index % 2 != 0 %}
 
@@ -28,8 +30,6 @@
 
 {% endif %} {% endfor %}
 
-    <div class="clearfix">
-            <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-        </div>
     </div>
+    </section>
 {% endblock %}

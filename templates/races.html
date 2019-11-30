@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
+ <section class="container">
 {% for race in races %}
     <div class="task_header col s9">
         <h2>{{ race.title }}</h2>
@@ -9,5 +10,6 @@
         <p>{{ race.description }}</p>
     </div>
 <hr>
+ </section>
 
  {% endfor %} {% endblock %}

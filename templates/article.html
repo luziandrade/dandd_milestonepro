@@ -1,7 +1,7 @@
 {%  extends 'base.html' %} {% block content %}
-
+<section class="container">
 <div class="row">
-    <div class="col-md-5">
+    <div class="container_title">
         <h2 class="col-md-7">{{ article.name }}</h2>
     </div>
 </div>
@@ -10,4 +10,5 @@
     <p>{{ article.text }}</p>
 
 </div>
+</section>
 {% endblock %}

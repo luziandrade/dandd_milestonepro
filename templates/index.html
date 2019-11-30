@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
     <!-- About -->
-<section class="content-section">
-    <div class="container text-center">
+
+    <div class="container text-center ">
         <div class="row">
-            <div class="col-lg-10 mx-auto">
+            <div class="col-xs-12">
                 <h2>Welcome to D&D Portal</h2>
                 <p class="lead mb-5">
                    Dungeons & Dragons is a fantasy tabletop role-playing game (RPG).
@@ -14,84 +14,53 @@
             </div>
         </div>
     </div>
-</section>
+
 
     <!--Guide-->
-<section class="content-section ">
-    <div class="container">
-        <div class="content-section-heading text-center">
-            <h2 class="mb-5">Guides</h2>
-        </div>
-        <div class="row no-gutters">
-            <div class="col-lg-6">
-                <a class="portfolio-item" href="{{ url_for('get_battle') }}">
-                    <span class="caption">
-                    </span>
-                    <img class="img-fluid" src="static/img/battles.jpg">
-                </a>
-            </div>
-             <div class="col-lg-6">
-                <a class="portfolio-item" href="{{ url_for('get_classes') }}">
-                    <span class="caption">
-                    </span>
-                    <img class="img-fluid" src="static/img/classes.jpg">
-                </a>
-            </div>
-             <div class="col-lg-6">
-                <a class="portfolio-item" href="{{ url_for('get_races') }}">
-                    <span class="caption">
-
-                    </span>
-                    <img class="img-fluid" src="static/img/races.jpg">
-                </a>
-            </div>
-             <div class="col-lg-6">
-                <a class="portfolio-item" href="{{ url_for('get_spells') }}">
-                    <span class="caption">
-
-                    </span>
-                    <img class="img-fluid" src="static/img/spells5.jpg">
-                </a>
-            </div>
-
-        </div>
+    <a name="guides">
+    <div class="content_heading text-center">
+        <h2 class="mb-5">Guides</h2>
     </div>
+    <div class="row_guide">
+            <div class="column  col-lg-6">
+                <a class="photo" href="{{ url_for('get_battle') }}">
+                    <div class="middle">
+                        <div class="text">Battles</div>
+                    </div>
+                    <img class="rounded-circle mr-3"  height=200 width=200 src="static/img/battles.jpg">
+                </a>
+            </div>
+             <div class="column  col-lg-6">
+                <a class="photo" href="{{ url_for('get_classes') }}">
+                    <div class="middle">
+                        <div class="text">Classes</div>
+                    </div>
+                    <img class="rounded-circle mr-3"  height=200 width=200 src="static/img/classes.jpg">
+                </a>
+            </div>
+             <div class="column  col-lg-6">
+                <a class="photo" href="{{ url_for('get_races') }}">
+                    <div class="middle">
+                        <div class="text">Races</div>
+                    </div>
+                    <img class="rounded-circle mr-3" height=200 width=200 src="static/img/races.jpg">
+                </a>
+            </div>
+             <div class="column  col-lg-6">
+                <a class="photo" href="{{ url_for('get_spells') }}">
+                    <div class="middle">
+                        <div class="text">Spells</div>
+                    </div>
+                    <img class="rounded-circle mr-3"  height=200 width=200 src="static/img/spells5.jpg">
+                </a>
+            </div>
 
-<!--
-    <div class="row">
-        <div class="col-sm-3 mb20">
-            <img class="img-fluid m-x-auto d-block img-responsive" src="static/img/battles.jpg" alt="battle">
-        </div>
-        <div class="col-sm-3 mb20">
-            <img class="img-fluid m-x-auto d-block img-responsive" src="static/img/classes.jpg" alt="classes">
-        </div>
-        <div class="col-sm-3 mb20">
-            <img class="img-fluid m-x-auto d-block img-responsive" src="static/img/races.jpg" alt="races">
-        </div>
-         <div class="col-sm-3 mb20">
-            <img class="img-fluid m-x-auto d-block img-responsive" src="static/img/spells.jpg" alt="spells">
-        </div>
     </div>
-    -->
-       <!-- <div class="row">
+    </a>
 
-            <div class="column col-sm">
-                <img src="static/img/battles.jpg" alt="battle" style="width:100%">
-            </div>
-            <div class="column col-sm">
-                <img src="static/img/classes.jpg" alt="classes" style="width:100%">
-            </div>
-            <div class="column col-sm">
-                <img src="static/img/races.jpg" alt="races" style="width:100%">
-            </div>
-            <div class="column col-sm">
-                <img src="static/img/spells.jpg" alt="spells" style="width:100%">
-            </div>
 
-        </div>-->
 
-</section>
-
+   <!--Modal-->
         <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-login">
         <div class="modal-content">

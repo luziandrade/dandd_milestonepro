@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %}
+<section class="container"></section>
 
 {% for guide in guides %}
     <div class="task_header col s9">
@@ -8,5 +9,7 @@
         <p>{{ guide.description }}</p>
     </div>
 <hr>
+
+</section>
 
  {% endfor %} {% endblock %}
