@@ -100,8 +100,8 @@ def login():
     login_user = users.find_one({'name': request.form['username']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user[
-            'password'].encode('utf-8'):
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'),
+                         login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
             session['username'] = request.form['username']
             return redirect(url_for('index'))
 
@@ -195,10 +195,6 @@ def delete_comment(comment_id):
     comments.remove({'_id': ObjectId(comment_id)})
     return redirect(url_for('get_comments'))
 
-
-""""@app.route('/battles')
-def battles():
-    return render_template("battles.html")"""
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP', '127.0.0.1'),
