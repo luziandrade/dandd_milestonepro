@@ -14,10 +14,10 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-        data = []
-        with open("data/article.json", "r") as json_data:
-            data = json.load(json_data)
-        return render_template("index.html", page_title="Article", articles=data)
+    data = []
+    with open("data/article.json", "r") as json_data:
+        data = json.load(json_data)
+    return render_template("index.html", page_title="Article", articles=data)
 
 
 @app.route('/get_battle')
@@ -46,12 +46,12 @@ def get_spells():
     spellevel3 = mongo.db.spells.find({"class": "Barbarian", "level": "3rd"})
     spellevel4 = mongo.db.spells.find({"class": "Barbarian", "level": "4th"})
     return render_template("spells.html", classes=classes,
-                                          spells=spells,
-                                         spells5=spellevel5,
-                                          spells1=spellevel1,
-                                          spells2=spellevel2,
-                                          spells3=spellevel3,
-                                         spells4=spellevel4)
+                           spells=spells,
+                           spells5=spellevel5,
+                           spells1=spellevel1,
+                           spells2=spellevel2,
+                           spells3=spellevel3,
+                           spells4=spellevel4)
 
 
 @app.route('/spells_name/<class_name>')
@@ -99,7 +99,8 @@ def login():
     login_user = users.find_one({'name': request.form['username']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user[
+            'password'].encode('utf-8'):
             session['username'] = request.form['username']
             return redirect(url_for('index'))
 
@@ -168,7 +169,6 @@ def reply_question(question_id, question_name):
 
 @app.route('/get_questions', methods=['POST'])
 def insert_questions():
-
     comment = mongo.db.questions
     comment.insert({'question_name': request.form['question_name'], 'username': session['username']})
     return redirect(url_for('get_comments'))
