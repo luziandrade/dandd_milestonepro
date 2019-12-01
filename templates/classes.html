@@ -1,58 +1,66 @@
 {% extends 'base.html' %} {% block content %}
  <section class="container">
-
- <a name="guides">
     <div class="content_heading text-center">
-        <h2>Guides</h2>
+        <h2 class="mb-5">Guides</h2>
     </div>
-    <div class="row">
-            <div class="column col-lg-6">
-                <a class="photo" href="{{ url_for('get_battle') }}">
-                    <div class="middle">
-                        <div class="text">Battles</div>
-                    </div>
-                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/battles.jpg">
-                </a>
-            </div>
-             <div class="column col-lg-6">
-                <a class="photo" href="{{ url_for('get_classes') }}">
-                    <div class="middle">
-                        <div class="text">Classes</div>
-                    </div>
-                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/classes.jpg">
-                </a>
-            </div>
-             <div class="column col-lg-6">
-                <a class="photo" href="{{ url_for('get_races') }}">
-                    <div class="middle">
-                        <div class="text">Races</div>
-                    </div>
-                    <img class="rounded-circle mr-3" height=100 width=100 src="static/img/races.jpg">
-                </a>
-            </div>
-             <div class="column col-lg-6">
-                <a class="photo" href="{{ url_for('get_spells') }}">
-                    <div class="middle">
-                        <div class="text">Spells</div>
-                    </div>
-                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/spells5.jpg">
-                </a>
-            </div>
-
+  <!-- Guides -->
+  <section class="content-section" id="portfolio">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_battle') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Batlles</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/battles.jpg" alt="battles">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_races') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Races</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/races.jpg" alt="races">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_classes') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Classes</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/classes.jpg" alt="classes">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_spells') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Spells</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/spells5.jpg" alt="spells">
+          </a>
+        </div>
+      </div>
     </div>
-</a>
 
 {% for class in classes %}
     <div class="task_header col s9">
         <button class="collapsible"><h2>{{ class.title }}</h2></button>
         <div class="content">
-        <h4>Hit Dice:</h4>
+        <h5>Hit Dice:</h5>
             <p>{{ class.hit_dice }}</p>
-        <h4>Armor:</h4>
+        <h5>Armor:</h5>
             <p>{{ class.armor }}</p>
-        <h4>Weapon:</h4>
+        <h5>Weapon:</h5>
             <p>{{ class.weapons }}</p>
-        <h4>Description:</h4>
+        <h5>Description:</h5>
             <p>{{ class.description }}</p>
         </div>
     </div>

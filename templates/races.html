@@ -1,59 +1,67 @@
 {% extends 'base.html' %} {% block content %}
 
  <section class="container">
-
- <a name="guides">
-    <div class="content_heading text-center">
-        <h2>Guides</h2>
+  <div class="content_heading text-center">
+        <h2 class="mb-5">Guides</h2>
     </div>
-    <div class="row">
-            <div class="column col-lg-6">
-                <a class="photo" href="{{ url_for('get_battle') }}">
-                    <div class="middle">
-                        <div class="text">Battles</div>
-                    </div>
-                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/battles.jpg">
-                </a>
-            </div>
-             <div class="column col-lg-6">
-                <a class="photo" href="{{ url_for('get_classes') }}">
-                    <div class="middle">
-                        <div class="text">Classes</div>
-                    </div>
-                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/classes.jpg">
-                </a>
-            </div>
-             <div class="column col-lg-6">
-                <a class="photo" href="{{ url_for('get_races') }}">
-                    <div class="middle">
-                        <div class="text">Races</div>
-                    </div>
-                    <img class="rounded-circle mr-3" height=100 width=100 src="static/img/races.jpg">
-                </a>
-            </div>
-             <div class="column col-lg-6">
-                <a class="photo" href="{{ url_for('get_spells') }}">
-                    <div class="middle">
-                        <div class="text">Spells</div>
-                    </div>
-                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/spells5.jpg">
-                </a>
-            </div>
-
+  <!-- Guides -->
+  <section class="content-section" id="portfolio">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_battle') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Batlles</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/battles.jpg" alt="battles">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_races') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Races</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/races.jpg" alt="races">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_classes') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Classes</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/classes.jpg" alt="classes">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_spells') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Spells</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/spells5.jpg" alt="spells">
+          </a>
+        </div>
+      </div>
     </div>
-</a>
 
 {% for race in races %}
     <div class="task_header col s9">
         <button class="collapsible"><h2>{{ race.title }}</h2></button>
         <div class="content">
-            <h4>Age:</h4>
+            <h5>Age:</h5>
                 <p>{{ race.age }}</p>
-            <h4>Alignment:</h4>
+            <h5>Alignment:</h5>
                 <p>{{ race.alignment }}</p>
-            <h4>Speed:</h4>
+            <h5>Speed:</h5>
                 <p>{{ race.speed }}</p>
-            <h4>Description:</h4>
+            <h5>Description:</h5>
                 <p>{{ race.description }}</p>
         </div>
     </div>

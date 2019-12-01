@@ -141,8 +141,9 @@ def logout():
 @app.route('/get_comments')
 def get_comments():
     if g.username:
-        return render_template("forum.html", questions=mongo.db.questions.find(),
-                           users=mongo.db.users.find({"name": session['username']}))
+        return render_template("forum.html",
+                               questions=mongo.db.questions.find(),
+                               users=mongo.db.users.find({"name": session['username']}))
     return render_template('register.html')
 
 
@@ -152,7 +153,7 @@ def insert_reply():
         comment = mongo.db.comments
         comment.insert({'question_name': request.form['question_name'],
                         'reply_name': request.form['reply_name'],
-                        'username': session['username']})
+                        'username': request.form['username']})
         return redirect(url_for('get_comments'))
 
     return render_template('register.html')
@@ -171,7 +172,7 @@ def reply_question(question_id, question_name):
 def insert_questions():
 
     comment = mongo.db.questions
-    comment.insert({'question_name': request.form['question_name'], 'username': request.form['username']})
+    comment.insert({'question_name': request.form['question_name'], 'username': session['username']})
     return redirect(url_for('get_comments'))
 
 

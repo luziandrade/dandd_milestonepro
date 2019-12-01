@@ -1,14 +1,15 @@
 {%  extends 'base.html' %} {% block content %}
     <section class="container">
     <div class="content_heading text-center">
-        <h2>Forum</h2>
+        <h2 class="mb-5">Forum</h2>
     </div>
 
             <form action="{{ url_for('insert_questions')}}" method="POST" class="col s12">
                  <input type="hidden" name="username" value="{{users.name}}">
 
                 {% for  question in questions  %}
-                    <h3><a type="hidden" name="question_name" value="{{question.question_name}}" href="{{url_for('reply_question', question_id=question._id, question_name=question.question_name)}}">{{ question.question_name }}</a></h3>
+                    <h4><a type="hidden" name="question_name" value="{{question.question_name}}" href="{{url_for('reply_question', question_id=question._id, question_name=question.question_name)}}">{{ question.question_name }}</a></h4>
+                    <div class="author_name">Author: {{ question.username }} </div>
                     <hr>
                 {% endfor %}
 

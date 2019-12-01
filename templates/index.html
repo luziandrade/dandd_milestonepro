@@ -1,5 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 
+    <!-- Page Header -->
+
+    <Header class="img-fluid masterhead col-xs-12" style="background-image: url('http://getwallpapers.com/wallpaper/full/e/5/3/884434-dungeons-and-dragons-wallpapers-1920x1080-for-desktop.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                </div>
+            </div>
+        </div>
+    </Header>
+
     <!-- About -->
 
     <div class="container text-center ">
@@ -16,41 +27,58 @@
     </div>
     <hr>
 
-    <!--Articles-->
+    <!-- Guides -->
 <section class="container">
-    <div class="content_heading text-center">
-        <h2 class="mb-5">Articles</h2>
+  <div class="content_heading text-center">
+        <h2 class="mb-5">Guides</h2>
     </div>
-
-{% for article in articles %} {% if loop.index % 2 != 0 %}
-
-<div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview">
-        <h2><a href="/articles/{{ article.url }}">{{ loop.index }}. {{ article.name }}</a></h2>
-            <p class="post-meta">{{ article.author }} </p>
+  <section class="content-section" id="portfolio">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_battle') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Batlles</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/battles.jpg" alt="battles">
+          </a>
         </div>
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_races') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Races</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/races.jpg" alt="races">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_classes') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Classes</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/classes.jpg" alt="classes">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="guide-item" href="{{ url_for('get_spells') }}">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Spells</h2>
+              </span>
+            </span>
+            <img class="img-fluid" src="static/img/spells5.jpg" alt="spells">
+          </a>
+        </div>
+      </div>
     </div>
-</div>
-
-{% else %}
-    <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview">
-        <h2><a href="/articles/{{ article.url }}">{{ loop.index }}. {{ article.name }}</a></h2>
-            <p class="post-meta">{{ article.author }} </p>
-         </div>
-    </div>
-
-    </div>
-{% endif %} {% if loop.index != 8 %}
-
-
-{% endif %} {% endfor %}
-
-    </div>
-    </section>
-
+  </section>
+</section>
 
    <!--Modal-->
         <div class="modal fade" id="myModal">

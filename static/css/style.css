@@ -16,7 +16,7 @@
 
 }
 .content-section {
-    padding-top: 7.5rem;
+    padding-top: 1rem;
     padding-bottom: 7.5rem;
 
 }
@@ -190,7 +190,7 @@ section {
 }
 
 .task_header{
-    margin-top: 8px;
+    margin-top: 2px;
 
 }
 .nav-item .nav-item{
@@ -209,19 +209,9 @@ section {
     padding-left: 0;
 
 }
-.container-guides{
-    background-color: #ffffff;
-    min-height: 50vh;
-    display:block;
-    position: relative;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-}
 .container{
     padding: 25px;
+    padding-top: 100px
 
 }
 .container_footer{
@@ -242,12 +232,15 @@ section {
 }
 .content_heading{
     font-family: 'Raleway', sans-serif;
-    padding: 25px;
 }
 a{
    color:#000000!important;
    text-decoration: none!important;
    background-color: transparent;
+
+}
+a:hover{
+    color: #a71d2a!important;
 
 }
 
@@ -290,7 +283,8 @@ a{
 
 /*-------Text--*/
 .container_title{
-    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     min-height: 100px;
 
 }
@@ -300,22 +294,21 @@ a{
   background-color: #ffffff;
   color: #000000;
   cursor: pointer;
-  padding: 10px;
   width: 100%;
   border: none;
   text-align: left;
 
 }
 .collapsible:after {
-    content: '\02795';
-    font-size: 13px;
-    color: #000000;
+    content: '\002B';
+    font-size: 25px;
+    color: #a71d2a;
     float: right;
     margin-left: 5px;
 
 }
 .active:after {
-  content: "\2796";
+  content: "\2212";
 
 }
 .content {
@@ -355,3 +348,23 @@ a{
 
 }
 
+/*------Title Section---*/
+.mb-5{
+    margin-top: 3rem;
+}
+hr{
+    border-top: 3px solid #a71d2a!important;
+
+}
+
+/*------Forum---*/
+.card-link a {
+    color: #a71d2a!important;
+    font-size: 15px;
+
+}
+
+.author_name {
+    text-transform: uppercase!important;
+
+}
