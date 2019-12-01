@@ -9,7 +9,6 @@ app = Flask(__name__)
 app.secret_key = 'some_secret'
 app.config["MONGO_DBNAME"] = 'dungeons'
 app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")
-app.config.from_object(Config)
 mongo = PyMongo(app)
 
 
@@ -38,7 +37,6 @@ def get_races():
 
 @app.route('/get_spells')
 def get_spells():
-    classes = mongo.db.classes.find()
     spells = mongo.db.spells.find()
     classes = mongo.db.classes.find()
     spellevel5 = mongo.db.spells.find({"class": "Barbarian", "level": "Cantrip"})
