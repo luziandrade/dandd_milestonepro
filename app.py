@@ -2,12 +2,11 @@ import os
 import json
 import bcrypt
 from flask import Flask, render_template, request, redirect, url_for, session, g
-from bson.objectid import ObjectId
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
-app.config["MONGO_DBNAME"] = 'dungeons'
 app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")
 mongo = PyMongo(app)
 
@@ -37,6 +36,7 @@ def get_races():
 
 @app.route('/get_spells')
 def get_spells():
+    classes = mongo.db.classes.find()
     spells = mongo.db.spells.find()
     classes = mongo.db.classes.find()
     spellevel5 = mongo.db.spells.find({"class": "Barbarian", "level": "Cantrip"})
@@ -98,8 +98,7 @@ def login():
     login_user = users.find_one({'name': request.form['username']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'),
-                         login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
             session['username'] = request.form['username']
             return redirect(url_for('index'))
 

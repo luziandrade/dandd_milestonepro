@@ -53,7 +53,7 @@
     <div class="class_name">
 {% for class in classes %}
 
-    <a name="class_name" value="{{ class.title }}" href="{{url_for('spells_name', class_name=class.title) }}" class="waves-effect waves-light btn btn_small blue"><h6>{{ class.title }}</h6></a>
+    <a name="class_name" value="{{ class.title }}" href="{{url_for('spells_name', class_name=class.title) }}" class="waves-effect waves-light btn btn_small blue"><h4>{{ class.title }}</h4></a>
 
 {% endfor %}
     </div>
