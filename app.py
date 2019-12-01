@@ -1,16 +1,15 @@
 import os
 import json
 import bcrypt
-from flask import Flask, render_template, request, redirect, url_for, session, g
+from flask import Flask, render_template, request, redirect, url_for, session, g, Config
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 app.config["MONGO_DBNAME"] = 'dungeons'
-app.config[
-    "MONGO_URI"] = 'mongodb+srv://root:010203@myfirstcluster-ekkz4.mongodb.net/dungeons?retryWrites=true&w=majority'
-"""app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")"""
+app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")
+app.config.from_object(Config)
 mongo = PyMongo(app)
 
 
