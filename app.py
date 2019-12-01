@@ -6,9 +6,9 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
-app.secret_key = os.getenv('some_secret')
+app.secret_key = 'some_secret'
 app.config["MONGO_DBNAME"] = 'dungeons'
-app.config['MONGO_URI'] = os.getenv("MONGODB_URI")
+app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")
 mongo = PyMongo(app)
 
 
