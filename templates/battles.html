@@ -1,15 +1,80 @@
 {% extends 'base.html' %} {% block content %}
-<section class="container"></section>
+<section class="container">
 
+<a name="guides">
+    <div class="content_heading text-center">
+        <h2>Guides</h2>
+    </div>
+    <div class="row">
+            <div class="column col-lg-6">
+                <a class="photo" href="{{ url_for('get_battle') }}">
+                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/battles.jpg">
+                        <p class="text">Battles</p>
+                </a>
+            </div>
+             <div class="column col-lg-6">
+                <a class="photo" href="{{ url_for('get_classes') }}">
+                    <div class="middle">
+                        <div class="text">Classes</div>
+                    </div>
+                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/classes.jpg">
+                </a>
+            </div>
+             <div class="column col-lg-6">
+                <a class="photo" href="{{ url_for('get_races') }}">
+                    <div class="middle">
+                        <div class="text">Races</div>
+                    </div>
+                    <img class="rounded-circle mr-3" height=100 width=100 src="static/img/races.jpg">
+                </a>
+            </div>
+             <div class="column col-lg-6">
+                <a class="photo" href="{{ url_for('get_spells') }}">
+                    <div class="middle">
+                        <div class="text">Spells</div>
+                    </div>
+                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/spells5.jpg">
+                </a>
+            </div>
+
+    </div>
+</a>
 {% for guide in guides %}
     <div class="task_header col s9">
-        <h2>{{ guide.title }}</h2>
-        <h4>Level:</h4><p>{{ guide.level }}</p>
-        <h4>Setting:</h4><p>{{ guide.setting }}</p>
-        <p>{{ guide.description }}</p>
+        <button class="collapsible"><h2>{{ guide.title }}</h2></button>
+        <div class="content">
+        <h4>Level:</h4>
+            <p>{{ guide.level }}</p>
+        <h4>Setting:</h4>
+            <p>{{ guide.setting }}</p>
+        <h4>Description:</h4>
+            <p>{{ guide.description }}</p>
+        </div>
     </div>
 <hr>
 
+ {% endfor %}
 </section>
 
- {% endfor %} {% endblock %}
+    <script>
+    const coll = document.getElementsByClassName("collapsible");
+    let i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    const content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+
+    </script>
+
+{% endblock %}
+
+
+

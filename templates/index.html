@@ -14,50 +14,42 @@
             </div>
         </div>
     </div>
+    <hr>
 
-
-    <!--Guide-->
-    <a name="guides">
+    <!--Articles-->
+<section class="container">
     <div class="content_heading text-center">
-        <h2 class="mb-5">Guides</h2>
+        <h2 class="mb-5">Articles</h2>
     </div>
-    <div class="row_guide">
-            <div class="column  col-lg-6">
-                <a class="photo" href="{{ url_for('get_battle') }}">
-                    <div class="middle">
-                        <div class="text">Battles</div>
-                    </div>
-                    <img class="rounded-circle mr-3"  height=200 width=200 src="static/img/battles.jpg">
-                </a>
-            </div>
-             <div class="column  col-lg-6">
-                <a class="photo" href="{{ url_for('get_classes') }}">
-                    <div class="middle">
-                        <div class="text">Classes</div>
-                    </div>
-                    <img class="rounded-circle mr-3"  height=200 width=200 src="static/img/classes.jpg">
-                </a>
-            </div>
-             <div class="column  col-lg-6">
-                <a class="photo" href="{{ url_for('get_races') }}">
-                    <div class="middle">
-                        <div class="text">Races</div>
-                    </div>
-                    <img class="rounded-circle mr-3" height=200 width=200 src="static/img/races.jpg">
-                </a>
-            </div>
-             <div class="column  col-lg-6">
-                <a class="photo" href="{{ url_for('get_spells') }}">
-                    <div class="middle">
-                        <div class="text">Spells</div>
-                    </div>
-                    <img class="rounded-circle mr-3"  height=200 width=200 src="static/img/spells5.jpg">
-                </a>
-            </div>
+
+{% for article in articles %} {% if loop.index % 2 != 0 %}
+
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+        <h2><a href="/articles/{{ article.url }}">{{ loop.index }}. {{ article.name }}</a></h2>
+            <p class="post-meta">{{ article.author }} </p>
+        </div>
+    </div>
+</div>
+
+{% else %}
+    <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+        <h2><a href="/articles/{{ article.url }}">{{ loop.index }}. {{ article.name }}</a></h2>
+            <p class="post-meta">{{ article.author }} </p>
+         </div>
+    </div>
 
     </div>
-    </a>
+{% endif %} {% if loop.index != 8 %}
 
+
+{% endif %} {% endfor %}
+
+    </div>
+    </section>
 
 
    <!--Modal-->

@@ -1,26 +1,27 @@
 {%  extends 'base.html' %} {% block content %}
     <section class="container">
     <div class="content_heading text-center">
-        <h2 class="mb-5">Forum</h2>
+        <h2>Forum</h2>
     </div>
-    <h2>Questions</h2>
-            <div class="container">
+
+            <form action="{{ url_for('insert_questions')}}" method="POST" class="col s12">
+                 <input type="hidden" name="username" value="{{users.name}}">
+
                 {% for  question in questions  %}
-                    <h2><a type="hidden" name="question_name" value="{{question.question_name}}" href="{{url_for('reply_question', question_id=question._id, question_name=question.question_name)}}">{{ question.question_name }}</a></h2>
+                    <h3><a type="hidden" name="question_name" value="{{question.question_name}}" href="{{url_for('reply_question', question_id=question._id, question_name=question.question_name)}}">{{ question.question_name }}</a></h3>
+                    <hr>
                 {% endfor %}
-            </div>
 
-        <form action="{{ url_for('insert_questions')}}" method="POST" class="col s12">
-            <div class="row">
+            <div class="container_comment">
 
-            <label for="comment">Ask a Question:</label>
-            <textarea name="question_name" id="question_name" class="form-control" rows="5" id="comment"></textarea>
-
-    <button class="btn waves-effect waves-light" type="submit" name="action">Reply
-    </button>
-
+                <label for="comment"><h4>Ask a Question:</h4></label>
+            <textarea name="question_name" id="question_name" class="form-control" rows="7" id="comment"></textarea>
+<div class="reply_btn">
+    <button class="btn btn-primary" type="submit" name="action">Reply</button>
+ </div>
             </div>
         </form>
     </section>
 
 {% endblock %}
+

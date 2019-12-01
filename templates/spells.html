@@ -1,11 +1,188 @@
 {% extends 'base.html' %} {% block content %}
 
+<section class="container">
+<a name="guides">
+    <div class="content_heading text-center">
+        <h2 class="mb-5">Guides</h2>
+    </div>
+    <div class="row">
+            <div class="column  col-lg-6">
+                <a class="photo" href="{{ url_for('get_battle') }}">
+                    <div class="middle">
+                        <div class="text">Battles</div>
+                    </div>
+                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/battles.jpg">
+                </a>
+            </div>
+             <div class="column  col-lg-6">
+                <a class="photo" href="{{ url_for('get_classes') }}">
+                    <div class="middle">
+                        <div class="text">Classes</div>
+                    </div>
+                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/classes.jpg">
+                </a>
+            </div>
+             <div class="column  col-lg-6">
+                <a class="photo" href="{{ url_for('get_races') }}">
+                    <div class="middle">
+                        <div class="text">Races</div>
+                    </div>
+                    <img class="rounded-circle mr-3" height=100 width=100 src="static/img/races.jpg">
+                </a>
+            </div>
+             <div class="column  col-lg-6">
+                <a class="photo" href="{{ url_for('get_spells') }}">
+                    <div class="middle">
+                        <div class="text">Spells</div>
+                    </div>
+                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/spells5.jpg">
+                </a>
+            </div>
+
+    </div>
+</a>
+    <div class="class_name">
 {% for class in classes %}
-    <a name="class_name" value="{{ class.title }}" href="{{url_for('spells_name', class_name=class.title) }}" class="waves-effect waves-light btn btn_small blue">{{ class.title }}</a>
+
+    <a name="class_name" value="{{ class.title }}" href="{{url_for('spells_name', class_name=class.title) }}" class="waves-effect waves-light btn btn_small blue"><h6>{{ class.title }}</h6></a>
 
 {% endfor %}
+    </div>
 
+<div class="text-center">
+ <h2>Cantrip</h2>
+    <hr>
+</div>
+    {% for spell in spells5 %}
+       <div class="task_header col s9">
+        <button class="collapsible"><h2>{{ spell.title }}</h2></button>
+        <div class="content">
+            <h4>Casting Time:</h4>
+                <p>{{ spell.casting_time }}</p>
+            <h4>Range:</h4>
+                <p>{{ spell.range }}</p>
+            <h4>Duration:</h4>
+                <p>{{ spell.duration }}</p>
+            <h4>Damage:</h4>
+                <p>{{ spell.damage }}</p>
+            <h4>Description:</h4>
+                <p>{{ spell.description }}</p>
+        </div>
+       </div>
 
+    {% endfor %}
+
+<div class="text-center">
+ <h2>First Level</h2>
+    <hr>
+</div>
+    {% for spell in spells1 %}
+       <div class="task_header col s9">
+        <button class="collapsible"><h2>{{ spell.title }}</h2></button>
+        <div class="content">
+            <h4>Casting Time:</h4>
+                <p>{{ spell.casting_time }}</p>
+            <h4>Range:</h4>
+                <p>{{ spell.range }}</p>
+            <h4>Duration:</h4>
+                <p>{{ spell.duration }}</p>
+            <h4>Damage:</h4>
+                <p>{{ spell.damage }}</p>
+            <h4>Description:</h4>
+                <p>{{ spell.description }}</p>
+        </div>
+       </div>
+
+    {% endfor %}
+
+<div class="text-center">
+ <h2>Second Level</h2>
+    <hr>
+</div>
+    {% for spell in spells2 %}
+       <div class="task_header col s9">
+        <button class="collapsible"><h2>{{ spell.title }}</h2></button>
+        <div class="content">
+            <h4>Casting Time:</h4>
+                <p>{{ spell.casting_time }}</p>
+            <h4>Range:</h4>
+                <p>{{ spell.range }}</p>
+            <h4>Duration:</h4>
+                <p>{{ spell.duration }}</p>
+            <h4>Damage:</h4>
+                <p>{{ spell.damage }}</p>
+            <h4>Description:</h4>
+                <p>{{ spell.description }}</p>
+        </div>
+       </div>
+
+    {% endfor %}
+
+<div class="text-center">
+ <h2>Third Level</h2>
+    <hr>
+</div>
+    {% for spell in spells3 %}
+       <div class="task_header col s9">
+        <button class="collapsible"><h2>{{ spell.title }}</h2></button>
+        <div class="content">
+            <h4>Casting Time:</h4>
+                <p>{{ spell.casting_time }}</p>
+            <h4>Range:</h4>
+                <p>{{ spell.range }}</p>
+            <h4>Duration:</h4>
+                <p>{{ spell.duration }}</p>
+            <h4>Damage:</h4>
+                <p>{{ spell.damage }}</p>
+            <h4>Description:</h4>
+                <p>{{ spell.description }}</p>
+        </div>
+       </div>
+
+    {% endfor %}
+
+<div class="text-center">
+ <h2>Fourth Level</h2>
+    <hr>
+</div>
+    {% for spell in spell4 %}
+       <div class="task_header col s9">
+        <button class="collapsible"><h2>{{ spell.title }}</h2></button>
+        <div class="content">
+            <h4>Casting Time:</h4>
+                <p>{{ spell.casting_time }}</p>
+            <h4>Range:</h4>
+                <p>{{ spell.range }}</p>
+            <h4>Duration:</h4>
+                <p>{{ spell.duration }}</p>
+            <h4>Damage:</h4>
+                <p>{{ spell.damage }}</p>
+            <h4>Description:</h4>
+                <p>{{ spell.description }}</p>
+        </div>
+       </div>
+
+    {% endfor %}
+
+</section>
+
+    <script>
+    const coll = document.getElementsByClassName("collapsible");
+    let i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    const content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+
+    </script>
 {% endblock %}
 
 

@@ -1,15 +1,83 @@
 {% extends 'base.html' %} {% block content %}
 
  <section class="container">
+
+ <a name="guides">
+    <div class="content_heading text-center">
+        <h2>Guides</h2>
+    </div>
+    <div class="row">
+            <div class="column col-lg-6">
+                <a class="photo" href="{{ url_for('get_battle') }}">
+                    <div class="middle">
+                        <div class="text">Battles</div>
+                    </div>
+                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/battles.jpg">
+                </a>
+            </div>
+             <div class="column col-lg-6">
+                <a class="photo" href="{{ url_for('get_classes') }}">
+                    <div class="middle">
+                        <div class="text">Classes</div>
+                    </div>
+                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/classes.jpg">
+                </a>
+            </div>
+             <div class="column col-lg-6">
+                <a class="photo" href="{{ url_for('get_races') }}">
+                    <div class="middle">
+                        <div class="text">Races</div>
+                    </div>
+                    <img class="rounded-circle mr-3" height=100 width=100 src="static/img/races.jpg">
+                </a>
+            </div>
+             <div class="column col-lg-6">
+                <a class="photo" href="{{ url_for('get_spells') }}">
+                    <div class="middle">
+                        <div class="text">Spells</div>
+                    </div>
+                    <img class="rounded-circle mr-3"  height=100 width=100 src="static/img/spells5.jpg">
+                </a>
+            </div>
+
+    </div>
+</a>
+
 {% for race in races %}
     <div class="task_header col s9">
-        <h2>{{ race.title }}</h2>
-        <p>{{ race.age }}</p>
-        <p>{{ race.alignment }}</p>
-        <p>{{ race.speed }}</p>
-        <p>{{ race.description }}</p>
+        <button class="collapsible"><h2>{{ race.title }}</h2></button>
+        <div class="content">
+            <h4>Age:</h4>
+                <p>{{ race.age }}</p>
+            <h4>Alignment:</h4>
+                <p>{{ race.alignment }}</p>
+            <h4>Speed:</h4>
+                <p>{{ race.speed }}</p>
+            <h4>Description:</h4>
+                <p>{{ race.description }}</p>
+        </div>
     </div>
 <hr>
+
+ {% endfor %}
  </section>
 
- {% endfor %} {% endblock %}
+    <script>
+    const coll = document.getElementsByClassName("collapsible");
+    let i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    const content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+
+    </script>
+
+{% endblock %}

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/clean-blog.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
+
 </head>
 
 <body>
@@ -29,7 +30,7 @@
                 <a class="nav-link" href="{{ url_for('articles') }}">Articles</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#guides">Guides</a>
+                <a class="nav-link" href="{{ url_for('get_battle') }}">Guides</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('get_comments') }}">Forum</a>
@@ -71,14 +72,11 @@
     </div>
 
     <!-- Page Header -->
-    <Header class="masthead" style="background-image: url('http://getwallpapers.com/wallpaper/full/e/5/3/884434-dungeons-and-dragons-wallpapers-1920x1080-for-desktop.jpg')">
+    <Header class="img-fluid masterhead col-xs-12" style="background-image: url('http://getwallpapers.com/wallpaper/full/e/5/3/884434-dungeons-and-dragons-wallpapers-1920x1080-for-desktop.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
-                    <div class="site-heading">
-                        <p>Tesssssssst</p>
-
-                    </div>
+                    <p>tsssssss</p>
                 </div>
             </div>
         </div>
@@ -89,13 +87,14 @@
         {% block content %} {% endblock %}
 
     <!-- Footer -->
+    <hr>
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                      <ul class="list-inline text-center">
                         <li class="list-inline-item">
-                            <a href="#" target="_blank">
+                            <a href="https://www.instagram.com/luzi_andrade/" target="_blank">
                                 <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x" style="color:#000000"></i>
                     <i class="fa fa-instagram fa-stack-1x fa-inverse" ></i>

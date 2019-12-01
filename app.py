@@ -10,13 +10,16 @@ app.secret_key = 'some_secret'
 app.config["MONGO_DBNAME"] = 'dungeons'
 app.config[
     "MONGO_URI"] = 'mongodb+srv://root:010203@myfirstcluster-ekkz4.mongodb.net/dungeons?retryWrites=true&w=majority'
-
+#app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")
 mongo = PyMongo(app)
 
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+        data = []
+        with open("data/article.json", "r") as json_data:
+            data = json.load(json_data)
+        return render_template("index.html", page_title="Article", articles=data)
 
 
 @app.route('/get_battle')
@@ -38,16 +41,36 @@ def get_races():
 def get_spells():
     classes = mongo.db.classes.find()
     spells = mongo.db.spells.find()
-    return render_template("spells.html", classes=classes, spells=spells)
+    classes = mongo.db.classes.find()
+    spellevel5 = mongo.db.spells.find({"class": "Barbarian", "level": "Cantrip"})
+    spellevel1 = mongo.db.spells.find({"class": "Barbarian", "level": "1st"})
+    spellevel2 = mongo.db.spells.find({"class": "Barbarian", "level": "2nd"})
+    spellevel3 = mongo.db.spells.find({"class": "Barbarian", "level": "3rd"})
+    spellevel4 = mongo.db.spells.find({"class": "Barbarian", "level": "4th"})
+    return render_template("spells.html", classes=classes,
+                                          spells=spells,
+                                         spells5=spellevel5,
+                                          spells1=spellevel1,
+                                          spells2=spellevel2,
+                                          spells3=spellevel3,
+                                         spells4=spellevel4)
 
 
 @app.route('/spells_name/<class_name>')
 def spells_name(class_name):
     classes = mongo.db.classes.find()
     spellevel = mongo.db.spells.find({"class": class_name, "level": "Cantrip"})
+    spellevel1 = mongo.db.spells.find({"class": class_name, "level": "1st"})
+    spellevel2 = mongo.db.spells.find({"class": class_name, "level": "2nd"})
+    spellevel3 = mongo.db.spells.find({"class": class_name, "level": "3rd"})
+    spellevel4 = mongo.db.spells.find({"class": class_name, "level": "4th"})
 
     return render_template('spells_name.html',
                            spells=spellevel,
+                           spells1=spellevel1,
+                           spells2=spellevel2,
+                           spells3=spellevel3,
+                           spells4=spellevel4,
                            classes=classes)
 
 
@@ -117,8 +140,10 @@ def logout():
 
 @app.route('/get_comments')
 def get_comments():
-    return render_template("forum.html", questions=mongo.db.questions.find(),
+    if g.username:
+        return render_template("forum.html", questions=mongo.db.questions.find(),
                            users=mongo.db.users.find({"name": session['username']}))
+    return render_template('register.html')
 
 
 @app.route('/insert_reply', methods=['POST'])
