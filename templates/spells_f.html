@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
 
-    <div class="content_heading text-center">
+  <div class="content_heading text-center">
         <h2 class="mb-5">Guides</h2>
     </div>
- <!-- Guides -->
+  <!-- Guides -->
   <section class="content-section" id="portfolio">
     <div class="container">
       <div class="row no-gutters">
@@ -50,40 +50,41 @@
         </div>
       </div>
     </div>
-    <div class="class_name">
 
 
+   <div class="class_name">
 
-    <a name="spell_name" value="cantrip" href="{{url_for('get_spells') }}" class="class_spell"><h4>Cantrip </h4></a>
-    <a name="spell_name" value="spell_name" href="{{url_for('spells_first') }}" class="class_spell"><h4>First Level </h4></a>
-    <a name="spell_name" value="spell_name" href="{{url_for('spells_second') }}" class="class_spell"><h4>Second Level </h4></a>
-    <a name="spell_name" value="spell_name" href="{{url_for('spells_third') }}" class="class_spell"><h4>Third Level </h4></a>
-    <a name="spell_name" value="spell_name" href="{{url_for('spells_fourth') }}" class="class_spell"><h4>Fourth Level </h4></a>
+    <a name="spell_name" value="cantrip" href="{{url_for('get_spells') }}" class="waves-effect waves-light btn btn_small blue"><h4>Cantrip</h4></a>
+    <a name="spell_name" value="spell_name" href="{{url_for('spells_first') }}" class="waves-effect waves-light btn btn_small blue"><h4>First Level</h4></a>
+    <a name="spell_name" value="spell_name" href="{{url_for('spells_second') }}" class="waves-effect waves-light btn btn_small blue"><h4>Second Level</h4></a>
+    <a name="spell_name" value="spell_name" href="{{url_for('spells_third') }}" class="waves-effect waves-light btn btn_small blue"><h4>Third Level</h4></a>
+    <a name="spell_name" value="spell_name" href="{{url_for('spells_fourth') }}" class="waves-effect waves-light btn btn_small blue"><h4>Fourth Level</h4></a>
 
-    </div>
 
+   </div>
 <div class="text-center">
- <h2>Cantrip</h2>
+ <h2>Fist Level</h2>
     <hr>
 </div>
-    {% for spell in spells5 %}
+    {% for spell in spells %}
        <div class="task_header col s9">
         <button class="collapsible"><h2>{{ spell.title }}</h2></button>
         <div class="content">
-            <h5>Casting Time:</h5>
+            <h4>Casting Time:</h4>
                 <p>{{ spell.casting_time }}</p>
-            <h5>Range:</h5>
+            <h4>Range:</h4>
                 <p>{{ spell.range }}</p>
-            <h5>Duration:</h5>
+            <h4>Duration:</h4>
                 <p>{{ spell.duration }}</p>
-            <h5>Damage:</h5>
+            <h4>Damage:</h4>
                 <p>{{ spell.damage }}</p>
-            <h5>Description:</h5>
+            <h4>Description:</h4>
                 <p>{{ spell.description }}</p>
         </div>
        </div>
 
     {% endfor %}
+
 
 
     <script>
@@ -103,8 +104,5 @@
 }
 
     </script>
+
 {% endblock %}
-
-
-
-

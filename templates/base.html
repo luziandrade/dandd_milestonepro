@@ -18,6 +18,8 @@
 
 <body>
 <!-- Navigation -->
+
+<div class="container-fluid px-0">
 <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark ">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,7 +47,7 @@
             </ul>
           </div>
 </nav>
-
+</div>
     <!--Modal-->
     <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-login">
@@ -73,14 +75,14 @@
     </div>
 
     <!-- Main Content -->
-
+<div class="container-fluid px-0">
         {% block content %} {% endblock %}
-
+</div>
     <!-- Footer -->
     <hr>
     <footer>
         <div class="container_footer">
-            <div class="row">
+            <div class="row m-0">
                 <div class="col-lg-8 col-md-10 mx-auto">
                      <ul class="list-inline text-center">
                         <li class="list-inline-item">

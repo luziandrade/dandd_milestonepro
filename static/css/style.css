@@ -1,18 +1,13 @@
-
-.masterhead{
-     background-attachment: fixed;
-     background-repeat: no-repeat;
-     background-size: cover;
-     padding: 70px;
-     margin:0;
-     min-height: 70vh;
-
-}
-
-.img-responsive {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
+/*--------------------------background image*/
+.main-photo{
+    background: url("http://getwallpapers.com/wallpaper/full/e/5/3/884434-dungeons-and-dragons-wallpapers-1920x1080-for-desktop.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 70px;
+    margin:0;
+    min-height: 70vh;
 
 }
 .content-section {
@@ -20,15 +15,13 @@
     padding-bottom: 7.5rem;
 
 }
-section {
-    display: block;
-}
 .caption-content .caption{
     color: #fff;
     margin: auto 2rem 2rem;
     font-size: 8rem;
 
 }
+/*--------------------------Login*/
 .modal-login {
     color: #636363;
     width: 350px;
@@ -117,6 +110,7 @@ section {
     margin: 4px 2px;
 
 }
+/*--------------------------Signup*/
 .signup-form {
     width: 400px;
     margin: 0 auto;
@@ -193,22 +187,48 @@ section {
     margin-top: 2px;
 
 }
-.nav-item .nav-item{
-    color: #ffffff!important;
+/*--------------------------Menu*/
+.navbar-toggler {
+  border: none;
+  background: transparent !important;
+}
+.navbar-toggler .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+
+.navbar-toggler .middle-bar {
+  opacity: 0;
+}
+
+.navbar-toggler .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+}
+
+.navbar-toggler.collapsed .top-bar {
+  transform: rotate(0);
+}
+
+.navbar-toggler.collapsed .middle-bar {
+  opacity: 1;
+}
+
+.navbar-toggler.collapsed .bottom-bar {
+  transform: rotate(0);
+}
+
+.nav-link {
+    color: #ffffff !important;
     font-family: 'Raleway', sans-serif;
-    display: block;
-    padding: .5rem 1rem;
-
 }
-.navbar-dark .navbar-nav .nav-link {
-    color: rgba(255,255,255,.5);
-
-}
-.navbar-nav .nav-link {
-    padding-right: 0;
+/*.container-fluid{
     padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}*/
 
-}
 .container{
     padding: 25px;
     padding-top: 100px
@@ -243,45 +263,7 @@ a:hover{
     color: #a71d2a!important;
 
 }
-
-/*--------------Menu-Bar*/
-.navbar-toggler {
-  border: none;
-  background: transparent !important;
-}
-.navbar-toggler .top-bar {
-  transform: rotate(45deg);
-  transform-origin: 10% 10%;
-}
-
-.navbar-toggler .middle-bar {
-  opacity: 0;
-}
-
-.navbar-toggler .bottom-bar {
-  transform: rotate(-45deg);
-  transform-origin: 10% 90%;
-}
-
-.navbar-toggler.collapsed .top-bar {
-  transform: rotate(0);
-}
-
-.navbar-toggler.collapsed .middle-bar {
-  opacity: 1;
-}
-
-.navbar-toggler.collapsed .bottom-bar {
-  transform: rotate(0);
-}
-
-.nav-link{
-    color: #ffffff!important;
-    font-family: 'Raleway', sans-serif;
-
-}
-
-/*-------Text--*/
+/*--------------------------Text*/
 .container_title{
     padding-top: 20px;
     padding-bottom: 20px;
@@ -289,7 +271,7 @@ a:hover{
 
 }
 
-/*-------Collapsible--*/
+/*--------------------------Collapse*/
 .collapsible {
   background-color: #ffffff;
   color: #000000;
@@ -320,14 +302,14 @@ a:hover{
 
 }
 
-/*--------Classes--*/
+/*--------------------------Classes*/
 .class_name{
     margin: 20px;
     padding-left: 40px;
 
 }
 
-/*------Comments---*/
+/*--------------------------Comments*/
 .card{
     border-radius: 25px!important;
     border: 1px solid #6c757d!important;
@@ -348,16 +330,24 @@ a:hover{
 
 }
 
-/*------Title Section---*/
+/*--------------------------Title Section*/
 .mb-5{
-    margin-top: 3rem;
+    margin-top: 5px!important;
+    margin-bottom: 3px!important;
+
+
 }
+.article_text, .forum_question{
+    text-align: justify!important;
+
+}
+
 hr{
     border-top: 3px solid #a71d2a!important;
 
 }
 
-/*------Forum---*/
+/*--------------------------Forum*/
 .card-link a {
     color: #a71d2a!important;
     font-size: 15px;
@@ -367,4 +357,18 @@ hr{
 .author_name {
     text-transform: uppercase!important;
 
+}
+/*--------------------------Spells*/
+.class_spell{
+    padding: 5px;
+    display: inline-block;
+    padding-left: 55px;
+
+}
+
+
+@media(min-with:767px){
+    .main-photo{
+        background: url("http://getwallpapers.com/wallpaper/full/e/5/3/884434-dungeons-and-dragons-wallpapers-1920x1080-for-desktop.jpg");
+    }
 }
