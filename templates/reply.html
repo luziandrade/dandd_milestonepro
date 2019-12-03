@@ -1,5 +1,5 @@
 {%  extends 'base.html' %} {% block content %}
-
+<section class="container">
     <form action="{{ url_for('insert_reply')}}" method="POST" class="col s12">
         <input type="hidden" name="username" value="{{users.name}}">
         <input type="hidden" name="question_name" value="{{question.question_name}}">
@@ -34,5 +34,5 @@
                 </div>
     </form>
 
-
+</section>
 {% endblock %}

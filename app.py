@@ -8,7 +8,9 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 app.config["MONGO_DBNAME"] = 'dungeons'
-app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")
+app.config[
+    "MONGO_URI"] = 'mongodb+srv://root:010203@myfirstcluster-ekkz4.mongodb.net/dungeons?retryWrites=true&w=majority'
+"""app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")"""
 mongo = PyMongo(app)
 
 
@@ -165,7 +167,7 @@ def insert_reply():
         comment = mongo.db.comments
         comment.insert({'question_name': request.form['question_name'],
                         'reply_name': request.form['reply_name'],
-                        'username': request.form['username']})
+                        'username': session['username']})
         return redirect(url_for('get_comments'))
 
     return render_template('register.html')
@@ -177,6 +179,7 @@ def reply_question(question_id, question_name):
     comments = mongo.db.comments.find({"question_name": question_name})
     author = mongo.db.users.find({"name": session['username']})
     user = session['username']
+
     return render_template("reply.html", question=questions, comments=comments, user=user, users=author)
 
 
