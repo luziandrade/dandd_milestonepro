@@ -1,6 +1,6 @@
 import os
 import json
-from flask.ext.bcrypt import Bcrypt
+from flask_bcrypt import Bcrypt
 from flask import Flask, render_template, request, redirect, url_for, session, g
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
