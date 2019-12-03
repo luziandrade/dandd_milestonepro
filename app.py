@@ -1,6 +1,6 @@
 import os
 import json
-import bcrypt
+from flask.ext.bcrypt import Bcrypt
 from flask import Flask, render_template, request, redirect, url_for, session, g
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -8,10 +8,10 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 app.config["MONGO_DBNAME"] = 'dungeons'
-app.config[
-    "MONGO_URI"] = 'mongodb+srv://root:010203@myfirstcluster-ekkz4.mongodb.net/dungeons?retryWrites=true&w=majority'
-"""app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")"""
+
+app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")
 mongo = PyMongo(app)
+bcrypt = Bcrypt(app)
 
 
 @app.route('/')
@@ -115,7 +115,7 @@ def login():
     login_user = users.find_one({'name': request.form['username']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+        if bcrypt.check_password_hash(login_user['password'], request.form['pass']):
             session['username'] = request.form['username']
             return redirect(url_for('index'))
 
@@ -129,7 +129,7 @@ def register():
         existing_user = users.find_one({'name': request.form['username']})
 
         if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            hashpass = bcrypt.generate_password_hash(request.form['pass']).decode('utf-8')
             users.insert({'name': request.form['username'], 'email': request.form['email'], 'password': hashpass})
             session['username'] = request.form['username']
             return redirect(url_for('index'))

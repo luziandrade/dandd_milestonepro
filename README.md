@@ -35,7 +35,7 @@ My goal was to build a website where a users could share their experiences, read
 * Create your own D&D session
 
 ###UX Files
-Ux files can be found here, they are organized in the following order:
+Ux files can be found [here](https://github.com/luziandrade/dandd_milestonepro/tree/master/user-design-experience), they are organized in the following order:
 
 * Scope Plane
 * Skeleton Plane
@@ -74,7 +74,7 @@ Users need to be log in to be able to use Forum section.
 ####Code
 The site was checked with W3C HTML and CSS validators.
 
-####Browser
+#### Browser
 Tested on the following browsers and devices:
 
 * Chrome
